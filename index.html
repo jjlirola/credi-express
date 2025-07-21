@@ -1,0 +1,129 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CrediExpress</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #1a1a1a;
+        }
+        header {
+            background-color: #0046be;
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+        }
+        nav a {
+            color: white;
+            margin-left: 2rem;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .hero {
+            background-color: #eaf1ff;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        .hero h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        .hero a {
+            background-color: #0046be;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .calculator {
+            max-width: 500px;
+            margin: 2rem auto;
+            padding: 2rem;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+        label, input {
+            display: block;
+            width: 100%;
+            margin-bottom: 1rem;
+        }
+        input[type=range] {
+            width: 100%;
+        }
+        footer {
+            background-color: #f2f2f2;
+            color: #333;
+            padding: 2rem;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>CrediExpress</h1>
+        <nav>
+            <a href="#calculadora">Calculadora</a>
+            <a href="#formulario">Solicitar</a>
+            <a href="#legal">Legal</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h2>Tu préstamo fácil y rápido</h2>
+        <p>Simula tu préstamo y solicita en minutos</p>
+        <a href="#calculadora">Calcular préstamo</a>
+    </section>
+
+    <section class="calculator" id="calculadora">
+        <h3>Calculadora de préstamo</h3>
+        <label for="monto">Importe: <span id="montoValue">500</span> €</label>
+        <input type="range" id="monto" min="100" max="1000" value="500" oninput="updateValues()" />
+
+        <label for="plazo">Plazo: <span id="plazoValue">12</span> meses</label>
+        <input type="range" id="plazo" min="1" max="24" value="12" oninput="updateValues()" />
+
+        <p>Total a devolver: <strong><span id="total">600</span> €</strong></p>
+    </section>
+
+    <section id="formulario" style="text-align:center; margin: 4rem;">
+        <a href="https://form.jotform.com/252014399614053" target="_blank" style="background:#0046be;color:white;padding:1rem 2rem;text-decoration:none;border-radius:5px;">
+            Ir al formulario
+        </a>
+    </section>
+
+    <footer id="legal">
+        <p>© 2025 CrediExpress. Todos los derechos reservados.</p>
+        <p><a href="#">Aviso legal</a> | <a href="#">Política de privacidad</a></p>
+    </footer>
+
+    <script>
+        function updateValues() {
+            const monto = document.getElementById('monto').value;
+            const plazo = document.getElementById('plazo').value;
+            const total = Math.round(monto * (1 + 0.02 * plazo));
+            document.getElementById('montoValue').textContent = monto;
+            document.getElementById('plazoValue').textContent = plazo;
+            document.getElementById('total').textContent = total;
+        }
+        updateValues();
+    </script>
+</body>
+</html>
