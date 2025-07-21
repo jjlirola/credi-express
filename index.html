@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CrediExpress - Tu préstamo rápido y seguro</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>CrediExpress</h1>
+            <nav>
+                <a href="#calculadora">Simulador</a>
+                <a href="#funciona">Cómo funciona</a>
+                <a href="#ventajas">Ventajas</a>
+                <a href="#legal">Legal</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h2>Tu préstamo fácil y rápido</h2>
+            <p>Simula tu préstamo online y consigue el dinero en minutos</p>
+            <a href="#calculadora" class="btn">Calcular préstamo</a>
+        </div>
+    </section>
+
+    <section id="calculadora" class="container">
+        <h3>Calculadora de préstamo</h3>
+        <label for="monto">Importe: <span id="montoValue">500</span> €</label>
+        <input type="range" id="monto" min="100" max="1000" value="500" step="50" oninput="updateValues()" />
+        <label for="plazo">Plazo: <span id="plazoValue">12</span> meses</label>
+        <input type="range" id="plazo" min="3" max="24" value="12" step="1" oninput="updateValues()" />
+        <p>Total a devolver: <strong><span id="total">0</span> €</strong></p>
+        <a href="#" class="btn">Solicitar ahora</a>
+    </section>
+
+    <section id="funciona" class="info-section">
+        <div class="container">
+            <h3>¿Cómo funciona?</h3>
+            <ul>
+                <li>1. Elige el importe y el plazo</li>
+                <li>2. Rellena el formulario</li>
+                <li>3. Recibe tu dinero al instante</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="ventajas" class="info-section alt">
+        <div class="container">
+            <h3>Ventajas de CrediExpress</h3>
+            <ul>
+                <li>✔ Respuesta inmediata</li>
+                <li>✔ Sin papeleos</li>
+                <li>✔ 100% online</li>
+                <li>✔ Transparencia total</li>
+            </ul>
+        </div>
+    </section>
+
+    <footer id="legal">
+        <div class="container">
+            <p>© 2025 CrediExpress. Todos los derechos reservados.</p>
+            <p><a href="#">Aviso legal</a> | <a href="#">Política de privacidad</a></p>
+        </div>
+    </footer>
+
+    <script>
+    function updateValues() {
+        const monto = document.getElementById('monto').value;
+        const plazo = document.getElementById('plazo').value;
+        const total = Math.round(monto * (1 + 0.02 * plazo));
+        document.getElementById('montoValue').textContent = monto;
+        document.getElementById('plazoValue').textContent = plazo;
+        document.getElementById('total').textContent = total;
+    }
+    updateValues();
+    </script>
+</body>
+</html>
