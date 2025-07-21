@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CrediExpress - Tu préstamo rápido</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>CrediExpress</h1>
+      <nav>
+        <a href="#calculadora">Calculadora</a>
+        <a href="#ventajas">Ventajas</a>
+        <a href="#faq">Preguntas</a>
+        <a href="#legal">Legal</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <h2>Tu préstamo rápido y sin complicaciones</h2>
+      <p>Solicita hasta 1.000 € en minutos</p>
+      <a class="cta" href="#calculadora">Simula tu préstamo</a>
+    </div>
+  </section>
+
+  <section id="calculadora" class="calculadora">
+    <div class="container">
+      <h3>Calculadora de préstamo</h3>
+      <p>Importe: <span id="monto">500</span> €</p>
+      <input type="range" id="montoSlider" min="100" max="1000" step="50" value="500">
+      <p>Plazo: <span id="plazo">6</span> meses</p>
+      <input type="range" id="plazoSlider" min="1" max="12" step="1" value="6">
+      <p>Total a devolver: <strong><span id="total">0</span> €</strong></p>
+      <a href="#" class="cta">Solicitar ahora</a>
+    </div>
+  </section>
+
+  <section id="ventajas" class="ventajas">
+    <div class="container">
+      <h3>¿Por qué elegirnos?</h3>
+      <ul>
+        <li>✔ Aprobación inmediata</li>
+        <li>✔ 100% online</li>
+        <li>✔ Sin papeleos</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="faq" class="faq">
+    <div class="container">
+      <h3>Preguntas frecuentes</h3>
+      <p><strong>¿Cuánto tarda el dinero?</strong> En menos de 15 minutos.</p>
+      <p><strong>¿Es seguro?</strong> Sí, usamos sistemas cifrados y verificación por SMS.</p>
+    </div>
+  </section>
+
+  <footer id="legal">
+    <div class="container">
+      <p><a href="#">Aviso Legal</a> | <a href="#">Política de Privacidad</a> | <a href="#">Cookies</a></p>
+      <p>&copy; 2025 CrediExpress</p>
+    </div>
+  </footer>
+
+  <script>
+    const monto = document.getElementById("monto");
+    const plazo = document.getElementById("plazo");
+    const total = document.getElementById("total");
+
+    document.getElementById("montoSlider").oninput = function () {
+      monto.textContent = this.value;
+      calcular();
+    };
+    document.getElementById("plazoSlider").oninput = function () {
+      plazo.textContent = this.value;
+      calcular();
+    };
+    function calcular() {
+      const m = parseInt(monto.textContent);
+      const p = parseInt(plazo.textContent);
+      const intereses = Math.round(m * 0.05 * p);
+      total.textContent = m + intereses;
+    }
+    calcular();
+  </script>
+</body>
+</html>
